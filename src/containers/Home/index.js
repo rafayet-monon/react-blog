@@ -1,5 +1,4 @@
 import React from "react";
-import "./style.css";
 import backgroundImage from "../../images/home-bg.jpg";
 import Header from "../../components/Header";
 import BlogList from "../../components/BlogList";
