@@ -20,7 +20,7 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "LOGIN":
+    case "AUTH":
       const user = action.payload.attributes;
       const token = action.payload.attributes.token;
       localStorage.setItem("user", JSON.stringify(user));
