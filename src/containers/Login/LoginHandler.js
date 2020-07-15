@@ -2,6 +2,10 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../../App";
 import * as Yup from "yup";
 import Api from "../../utils/Api";
+import {
+  ErrorNotification,
+  SuccessNotification,
+} from "../../components/Notification";
 
 const LoginHandler = () => {
   const [status, setStatus] = useState(false);
@@ -29,23 +33,24 @@ const LoginHandler = () => {
       })
         .then(function (response) {
           if (response.status === 200) {
+            SuccessNotification("Successfully Logged In");
+            setStatus(true);
+
             return response.data;
           }
-          throw response;
         })
         .then((resData) => {
           dispatch({
             type: "AUTH",
             payload: resData.data,
           });
-          setStatus(true);
         });
     } catch (error) {
       if (error.response) {
         let error_response = error.response.data.errors;
-        console.log(error_response.title);
+        ErrorNotification(error_response.title);
       } else {
-        console.log(`Request failed: ${error}`);
+        ErrorNotification(`Request failed: ${error}`);
       }
     }
   };
