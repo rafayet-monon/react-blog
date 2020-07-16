@@ -11,7 +11,7 @@ const SignupForm = (props) => {
             <form name="sentMessage" id="contactForm" onSubmit={handleSubmit}>
               <div className="control-group">
                 <div className="form-group floating-label-form-group controls">
-                  <label>Email Address</label>
+                  <label htmlFor="email">Email Address</label>
                   <input
                     type="email"
                     className="form-control"
@@ -28,7 +28,7 @@ const SignupForm = (props) => {
               </div>
               <div className="control-group">
                 <div className="form-group floating-label-form-group controls">
-                  <label>Username</label>
+                  <label htmlFor="username">Username</label>
                   <input
                     type="text"
                     className="form-control"
@@ -45,7 +45,7 @@ const SignupForm = (props) => {
               </div>
               <div className="control-group">
                 <div className="form-group col-xs-12 floating-label-form-group controls">
-                  <label>Password</label>
+                  <label htmlFor="password">Password</label>
                   <input
                     type="password"
                     className="form-control"
@@ -62,7 +62,9 @@ const SignupForm = (props) => {
               </div>
               <div className="control-group">
                 <div className="form-group col-xs-12 floating-label-form-group controls">
-                  <label>Password Confirmation</label>
+                  <label htmlFor="password_confirmation">
+                    Password Confirmation
+                  </label>
                   <input
                     type="password"
                     className="form-control"

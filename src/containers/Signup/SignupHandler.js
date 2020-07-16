@@ -1,7 +1,11 @@
-import React, { useContext, useState } from "react";
-import { AuthContext } from "../../App";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 import * as Yup from "yup";
 import Api from "../../utils/Api";
+import {
+  ErrorNotification,
+  SuccessNotification,
+} from "../../components/Notification";
 
 const SignupHandler = () => {
   const [status, setStatus] = useState(false);
@@ -41,23 +45,24 @@ const SignupHandler = () => {
       })
         .then(function (response) {
           if (response.status === 200) {
+            SuccessNotification("Successfully Signed Up!");
+            setStatus(true);
+
             return response.data;
           }
-          throw response;
         })
         .then((resData) => {
           dispatch({
             type: "AUTH",
             payload: resData.data,
           });
-          setStatus(true);
         });
     } catch (error) {
       if (error.response) {
         let error_response = error.response.data.errors;
-        console.log(error_response.title);
+        ErrorNotification(error_response.title);
       } else {
-        console.log(`Request failed: ${error}`);
+        ErrorNotification(`Request failed: ${error}`);
       }
     }
   };
