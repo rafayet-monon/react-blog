@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import React from "react";
 import "./App.scss";
 import Home from "./containers/Home";
 import Navbar from "./components/Navbar";
@@ -9,52 +9,13 @@ import AboutMe from "./containers/AboutMe";
 import BlogDetail from "./components/BlogDetail";
 import Signup from "./containers/Signup";
 import Login from "./containers/Login";
-
-export const AuthContext = createContext();
-
-const initialState = {
-  isAuthenticated: false,
-  user: null,
-  token: null,
-};
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "AUTH":
-      const user = action.payload.attributes;
-      const token = action.payload.attributes.token;
-      localStorage.setItem("user", JSON.stringify(user));
-      localStorage.setItem("token", JSON.stringify(token));
-      return {
-        ...state,
-        isAuthenticated: true,
-        user: user,
-        token: token,
-      };
-    case "LOGOUT":
-      localStorage.clear();
-      return {
-        ...state,
-        isAuthenticated: false,
-        user: null,
-      };
-    default:
-      return state;
-  }
-};
+import { AuthProvider } from "./contexts/AuthContext";
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, initialState);
-
   return (
     <Router>
-      <AuthContext.Provider
-        value={{
-          state,
-          dispatch,
-        }}
-      >
-        <div className="App">
+      <AuthProvider>
+        <div className="App Fade">
           <Navbar />
           <Route path="/" exact component={Home} />
           <Route path="/contact" component={Contact} />
@@ -63,9 +24,8 @@ function App() {
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Footer />
-          {}
         </div>
-      </AuthContext.Provider>
+      </AuthProvider>
     </Router>
   );
 }

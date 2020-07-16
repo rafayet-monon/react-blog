@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { AuthContext } from "../../App";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 import * as Yup from "yup";
 import Api from "../../utils/Api";
 import {
