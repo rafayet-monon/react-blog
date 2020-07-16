@@ -1,21 +1,21 @@
 ::-moz-selection {
-  color: $white;
   background: $primary;
+  color: $white;
   text-shadow: none;
 }
 
 ::selection {
-  color: $white;
   background: $primary;
+  color: $white;
   text-shadow: none;
 }
 
 img::selection {
-  color: $white;
   background: transparent;
+  color: $white;
 }
 
 img::-moz-selection {
-  color: $white;
   background: transparent;
+  color: $white;
 }

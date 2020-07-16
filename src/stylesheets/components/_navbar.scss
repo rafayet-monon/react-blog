@@ -1,20 +1,23 @@
 #mainNav {
+  background-color: white;
+  border-bottom: 1px solid $gray-200;
   overflow: hidden;
   position: fixed;
-  border-bottom: 1px solid $gray-200;
-  background-color: white;
   @include sans-serif-font;
+
   .navbar-brand {
-    font-weight: 800;
     color: $gray-800;
+    font-weight: 800;
   }
+
   .navbar-toggler {
+    color: $gray-800;
     font-size: 12px;
     font-weight: 800;
     padding: 13px;
     text-transform: uppercase;
-    color: $gray-800;
   }
+
   .navbar-nav {
     > li.nav-item {
       > a {
@@ -25,12 +28,14 @@
       }
     }
   }
+
   @media only screen and (min-width: 992px) {
-    border-bottom: 1px solid transparent;
     background: black;
+    border-bottom: 1px solid transparent;
     .navbar-brand {
-      padding: 10px 20px;
       color: $white;
+      padding: 10px 20px;
+
       &:focus,
       &:hover {
         color: fade-out($white, .2);
@@ -39,8 +44,9 @@
     .navbar-nav {
       > li.nav-item {
         > a {
-          padding: 10px 20px;
           color: $white;
+          padding: 10px 20px;
+
           &:focus,
           &:hover {
             color: fade-out($white, .2);
@@ -50,36 +56,40 @@
     }
   }
   @media only screen and (min-width: 992px) {
-    -webkit-transition: background-color 0.2s;
-    -moz-transition: background-color 0.2s;
-    transition: background-color 0.2s;
-    /* Force Hardware Acceleration in WebKit */
-    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
+    /* Force Hardware Acceleration in WebKit */
     -o-transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
-    -webkit-backface-visibility: hidden;
+    -moz-transition: background-color 0.2s;
+    -webkit-transition: background-color 0.2s;
+    transition: background-color 0.2s;
     &.is-fixed {
       /* when the user scrolls down, we hide the header right above the viewport */
+      background-color: fade-out($white, .1);
+      border-bottom: 1px solid darken($white, .05);
       position: fixed;
       top: -67px;
-      -webkit-transition: -webkit-transform 0.2s;
       -moz-transition: -moz-transform 0.2s;
+      -webkit-transition: -webkit-transform 0.2s;
       transition: transform 0.2s;
-      border-bottom: 1px solid darken($white, .05);
-      background-color: fade-out($white, .1);
+
       .navbar-brand {
         color: $gray-900;
+
         &:focus,
         &:hover {
           color: $primary;
         }
       }
+
       .navbar-nav {
         > li.nav-item {
           > a {
             color: $gray-900;
+
             &:focus,
             &:hover {
               color: $primary;
@@ -90,10 +100,10 @@
     }
     &.is-visible {
       /* if the user changes the scrolling direction, we show the header */
-      -webkit-transform: translate3d(0, 100%, 0);
       -moz-transform: translate3d(0, 100%, 0);
       -ms-transform: translate3d(0, 100%, 0);
       -o-transform: translate3d(0, 100%, 0);
+      -webkit-transform: translate3d(0, 100%, 0);
       transform: translate3d(0, 100%, 0);
     }
   }
