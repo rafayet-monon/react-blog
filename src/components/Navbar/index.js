@@ -1,5 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import ConditionalNavs from "./ConditionalNavs";
+
 const Navbar = () => {
   return (
     <div>
@@ -40,16 +42,7 @@ const Navbar = () => {
                   Contact
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/login">
-                  Login
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/signup">
-                  Sign Up
-                </NavLink>
-              </li>
+              <ConditionalNavs />
             </ul>
           </div>
         </div>
