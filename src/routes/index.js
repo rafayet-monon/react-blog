@@ -22,7 +22,7 @@ const RouteList = () => {
       <UnauthenticaedRoute path="/signup" component={Signup} />
       <UnauthenticaedRoute path="/login" component={Login} />
       <AuthenticaedRoute path="/profile" component={Profile} />
-      <AuthenticaedRoute path="/write-blog" component={WriteBlog} />
+      <UnauthenticaedRoute path="/write-blog" component={WriteBlog} />
       <AuthenticaedRoute path="/logout" component={Logout} />
       <Route component={NotFound} />
     </Switch>

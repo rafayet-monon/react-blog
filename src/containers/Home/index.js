@@ -7,15 +7,16 @@ import Api from "../../utils/Api";
 class Home extends Component {
   state = {
     isLoading: true,
+    _isMounted: false,
   };
 
-  async componentDidMount() {
+  componentDidMount() {
+    let token = localStorage.getItem("token");
+
     try {
-      let homeData = await Api.get("", {
-        credentials: "include",
-        params: {
-          results: 1,
-          inc: "name,email,picture",
+      let homeData = Api.get("", {
+        headers: {
+          Authorization: token ? `Bearer ${token}` : "",
         },
       });
       console.log(homeData);

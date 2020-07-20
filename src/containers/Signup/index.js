@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../../components/Header";
-import backgroundImage from "../../images/login-signup.jpeg";
+import backgroundImage from "../../images/login-signup.jpg";
 import { useFormik } from "formik";
 import SignupHandler from "./SignupHandler";
 import SignupForm from "./SignupForm";

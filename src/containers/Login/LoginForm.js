@@ -1,4 +1,5 @@
 import React from "react";
+import Spinner from "../../components/Spinner";
 
 const LoginForm = (props) => {
   const { handleSubmit, errors, isSubmitting, getFieldProps } = props.formik;
@@ -52,7 +53,7 @@ const LoginForm = (props) => {
                 id="sendMessageButton"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Loading..." : "Login"}
+                {isSubmitting ? <Spinner /> : "Login"}
               </button>
             </form>
           </div>
