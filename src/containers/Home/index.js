@@ -1,54 +1,55 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import backgroundImage from "../../images/home-bg.jpg";
 import Header from "../../components/Header";
 import BlogList from "../../components/BlogList";
 import Api from "../../utils/Api";
+import { ErrorNotification } from "../../components/Notification";
 
-class Home extends Component {
-  state = {
-    isLoading: true,
-    _isMounted: false,
-  };
+const Home = () => {
+  const [blogData, setBlogData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  componentDidMount() {
-    let token = localStorage.getItem("token");
+  useEffect(() => {
+    getBlogs();
+  }, []);
 
+  const getBlogs = async () => {
     try {
-      let homeData = Api.get("", {
-        headers: {
-          Authorization: token ? `Bearer ${token}` : "",
-        },
+      await Api.get("api/v1/blogs").then(function (response) {
+        if (response.status === 200) {
+          setBlogData(response.data.data);
+          setIsLoading(false);
+        }
       });
-      console.log(homeData);
-    } catch (e) {
-      console.log(`Request failed: ${e}`);
+    } catch (error) {
+      if (error.response) {
+        let error_response = error.response.data.errors;
+        ErrorNotification(error_response.title);
+      } else {
+        ErrorNotification(`Request failed: ${error}`);
+      }
     }
-
-    this.setState({
-      isLoading: false,
-    });
-  }
-
-  render() {
-    return (
-      <div>
-        <Header
-          backgroundImage={backgroundImage}
-          titlle="The Blog"
-          slogan="By React"
-        />
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8 col-md-10 mx-auto">
-              <BlogList />
-              <BlogList />
-              <BlogList />
-            </div>
+  };
+  return (
+    <div>
+      <Header
+        backgroundImage={backgroundImage}
+        titlle="The Blog"
+        slogan="By React"
+      />
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-8 col-md-10 mx-auto">
+            {isLoading ? (
+              <h1>Loading Blogs..</h1>
+            ) : (
+              <BlogList blogList={blogData} />
+            )}
           </div>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Home;

@@ -25,7 +25,6 @@ const LoginHandler = () => {
 
   const handleSubmit = async (values) => {
     try {
-      console.log(Api);
       await Api.post("api/v1/users/login", {
         user: {
           email: values.email,

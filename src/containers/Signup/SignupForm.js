@@ -89,7 +89,7 @@ const SignupForm = (props) => {
                 id="sendMessageButton"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? <Spinner /> : "Login"}
+                {isSubmitting ? <Spinner /> : "Signup"}
               </button>
             </form>
           </div>
