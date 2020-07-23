@@ -43,11 +43,7 @@ const AuthenticaedNavs = () => {
 const ConditionalNavs = () => {
   const { state } = useContext(AuthContext);
 
-  if (state.isAuthenticated) {
-    return <AuthenticaedNavs />;
-  } else {
-    return <UnauthenticaedNavs />;
-  }
+  return state.isAuthenticated ? <AuthenticaedNavs /> : <UnauthenticaedNavs />;
 };
 
 export default ConditionalNavs;

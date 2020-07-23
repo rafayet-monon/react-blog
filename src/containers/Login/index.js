@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../../components/Header";
-import backgroundImage from "../../images/login-signup.jpeg";
+import backgroundImage from "../../images/login-signup.jpg";
 import { Redirect } from "react-router-dom";
 import { useFormik } from "formik";
 import LoginHandler from "./LoginHandler";

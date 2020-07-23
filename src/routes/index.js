@@ -4,7 +4,7 @@ import { AuthenticaedRoute, UnauthenticaedRoute } from "./ProtectedRoute";
 import Home from "../containers/Home";
 import Contact from "../containers/Contact";
 import AboutMe from "../containers/AboutMe";
-import BlogDetail from "../components/BlogDetail";
+import BlogDetail from "../containers/BlogDetail";
 import Signup from "../containers/Signup";
 import Login from "../containers/Login";
 import Profile from "../containers/Profile";
@@ -18,7 +18,7 @@ const RouteList = () => {
       <Route path="/" exact component={Home} />
       <Route path="/contact" component={Contact} />
       <Route path="/about" component={AboutMe} />
-      <Route path="/blog-detail" component={BlogDetail} />
+      <Route path="/blog-detail/:blogId" component={BlogDetail} />
       <UnauthenticaedRoute path="/signup" component={Signup} />
       <UnauthenticaedRoute path="/login" component={Login} />
       <AuthenticaedRoute path="/profile" component={Profile} />

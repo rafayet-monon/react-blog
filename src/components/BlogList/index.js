@@ -1,24 +1,23 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import PreviewItem from "./PreviewItem";
 
-const BlogList = () => {
+const BlogList = ({ blogList }) => {
   return (
     <div>
-      <div className="post-preview">
-        <NavLink to="/blog-detail">
-          <h2 className="post-title">
-            Man must explore, and this is exploration at its greatest
-          </h2>
-          <h3 className="post-subtitle">
-            Problems look mighty small from 150 miles up
-          </h3>
-        </NavLink>
-        <p className="post-meta">
-          Posted by
-          <a href="#">Start Bootstrap</a>
-          on September 24, 2019
-        </p>
-      </div>
+      {blogList.length === 0 ? (
+        <h1>No blogs found</h1>
+      ) : (
+        blogList.map((blog) => (
+          <PreviewItem
+            title={blog.attributes.title}
+            subtitle={blog.attributes.subtitle}
+            posted_at={blog.attributes.posted_at}
+            posted_by={blog.attributes.posted_by}
+            blog_id={blog.id}
+            key={blog.id}
+          />
+        ))
+      )}
       <hr />
     </div>
   );
