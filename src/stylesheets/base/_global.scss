@@ -5,18 +5,28 @@
 }
 
 .caption {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  display: block;
   font-size: 14px;
   font-style: italic;
-  display: block;
   margin: 0;
   padding: 10px;
   text-align: center;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
 }
-.validation-error{
-  margin: 5px 0;
+
+.validation-error {
   font-size: 14px;
+  margin: 5px 0;
+}
+
+@keyframes FadeAnim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 @keyframes FadeAnim {
   0% {
